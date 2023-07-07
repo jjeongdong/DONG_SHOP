@@ -90,18 +90,18 @@ class ItemRepositoryTest {
             System.out.println(item);
         }
     }
-//
-//    @Test
-//    @DisplayName("Native 쿼리")
-//    public void findByItemDetailNativeTest() {
-//        createItemList();
-//
-//        List<Item> itemList = itemRepository.findByItemDetailNative("테스트");
-//
-//        for (Item item : itemList) {
-//            System.out.println(item);
-//        }
-//    }
+
+    @Test
+    @DisplayName("Native 쿼리")
+    public void findByItemDetailNativeTest() {
+        createItemList();
+
+        List<Item> itemList = itemRepository.findByItemDetailNative("테스트");
+
+        for (Item item : itemList) {
+            System.out.println(item);
+        }
+    }
 //
 //    @Test
 //    @DisplayName("querydsl 테스트")
