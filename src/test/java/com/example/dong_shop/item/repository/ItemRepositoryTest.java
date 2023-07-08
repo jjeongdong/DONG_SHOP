@@ -6,11 +6,15 @@ import java.util.List;
 
 import com.example.dong_shop.item.constant.ItemSellStatus;
 import com.example.dong_shop.item.entity.Item;
-import jakarta.persistence.EntityManager;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.persistence.EntityManager;
+
+import static com.example.dong_shop.item.entity.QItem.item;
 
 
 //import com.querydsl.core.BooleanBuilder;
@@ -102,27 +106,27 @@ class ItemRepositoryTest {
             System.out.println(item);
         }
     }
-//
-//    @Test
-//    @DisplayName("querydsl 테스트")
-//    public void querydslTest() {
-//        createItemList();
-//
-//        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-//
-//        List<Item> list = queryFactory
-//                .selectFrom(item)
-//                .where(item.itemSellStatus.eq(ItemSellStatus.SELL))
-//                .where(item.itemDetail.like("%" + "1" + "%"))
-//                .orderBy(item.price.asc())
-//                .fetch();
-//
-//        for (Item item : list) {
-//            System.out.println(item);
-//        }
-//
-//
-//    }
+
+    @Test
+    @DisplayName("querydsl 테스트")
+    public void querydslTest() {
+        createItemList();
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+
+        List<Item> list = queryFactory
+                .selectFrom(item)
+                .where(item.itemSellStatus.eq(ItemSellStatus.SELL))
+                .where(item.itemDetail.like("%" + "1" + "%"))
+                .orderBy(item.price.asc())
+                .fetch();
+
+        for (Item item : list) {
+            System.out.println(item);
+        }
+
+
+    }
 //
 //    public void createItemList2(){
 //        for(int i=1;i<=5;i++){
