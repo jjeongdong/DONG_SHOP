@@ -1,6 +1,7 @@
 package com.example.dong_shop.cart.entity;
 
 import com.example.dong_shop.member.entity.Member;
+import com.example.dong_shop.utils.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Cart {
+public class Cart extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cart_id")

@@ -1,10 +1,10 @@
 package com.example.dong_shop.item.entity;
 
 import com.example.dong_shop.item.constant.ItemSellStatus;
+import com.example.dong_shop.utils.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Item {
+public class Item extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
@@ -34,11 +34,5 @@ public class Item {
     @Lob
     @Column(nullable = false)
     private String itemDetail;  // 상품 상세 설명
-
-    @Column(nullable = false)
-    private LocalDateTime regTime;  // 등록 시간
-
-    private LocalDateTime updateTime;  // 등록 시간
-
 
 }

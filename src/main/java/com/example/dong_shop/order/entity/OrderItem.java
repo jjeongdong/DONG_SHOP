@@ -1,6 +1,7 @@
 package com.example.dong_shop.order.entity;
 
 import com.example.dong_shop.item.entity.Item;
+import com.example.dong_shop.utils.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrderItem {
+public class OrderItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
@@ -31,7 +32,4 @@ public class OrderItem {
 
     private int count;
 
-    private LocalDateTime regTime;
-
-    private LocalDateTime updateTime;
 }
