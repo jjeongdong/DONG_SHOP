@@ -2,6 +2,7 @@ package com.example.dong_shop.member.entity;
 
 import com.example.dong_shop.member.constant.Role;
 import com.example.dong_shop.member.dto.MemberFormDto;
+import com.example.dong_shop.utils.entity.BaseEntity;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Member {
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
