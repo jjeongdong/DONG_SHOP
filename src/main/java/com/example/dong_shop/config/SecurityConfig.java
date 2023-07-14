@@ -26,7 +26,16 @@ public class SecurityConfig {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/");
 
+        // 인증여부 확인
+        http.authorizeHttpRequests()
+                .mvcMatchers("/css/**", "/js/**").permitAll()
+                .mvcMatchers("/", "/member/**", "item/**").permitAll()
+                .mvcMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
 
+        // 인증되지 않은 사용자가 접근할 경우, 오류 처리
+        http.exceptionHandling()
+                .authenticationEntryPoint(new CustomEntryPoint());
         return http.build();
     }
 
