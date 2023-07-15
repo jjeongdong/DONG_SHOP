@@ -5,7 +5,6 @@ import com.example.dong_shop.utils.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter

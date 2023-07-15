@@ -3,7 +3,6 @@ package com.example.dong_shop.config;
 import org.springframework.security.core.AuthenticationException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
