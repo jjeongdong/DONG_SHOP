@@ -2,11 +2,14 @@ package com.example.dong_shop.item.service;
 
 import com.example.dong_shop.item.dto.ItemFormDto;
 import com.example.dong_shop.item.dto.ItemImgDto;
+import com.example.dong_shop.item.dto.ItemSearchDto;
 import com.example.dong_shop.item.entity.Item;
 import com.example.dong_shop.item.entity.ItemImg;
 import com.example.dong_shop.item.repository.ItemImgRepository;
 import com.example.dong_shop.item.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -66,19 +69,23 @@ public class ItemService {
         return itemFormDto;
     }
 
-    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
-        //상품 수정
+    public void updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
+
+        // 상품 수정
         Item item = itemRepository.findById(itemFormDto.getId())
                 .orElseThrow(EntityNotFoundException::new);
+
         item.updateItem(itemFormDto);
         List<Long> itemImgIds = itemFormDto.getItemImgIds();
 
-        //이미지 등록
-        for(int i=0;i<itemImgFileList.size();i++){
-            itemImgService.updateItemImg(itemImgIds.get(i),
-                    itemImgFileList.get(i));
+        // 이미지 등록
+        for(int i = 0; i < itemImgFileList.size(); i++){
+            itemImgService.updateItemImg(itemImgIds.get(i), itemImgFileList.get(i));
         }
 
-        return item.getId();
+    }
+
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 }
