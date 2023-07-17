@@ -1,6 +1,7 @@
 package com.example.dong_shop.item.entity;
 
 import com.example.dong_shop.item.constant.ItemSellStatus;
+import com.example.dong_shop.item.dto.ItemFormDto;
 import com.example.dong_shop.utils.entity.BaseEntity;
 import lombok.*;
 
@@ -35,4 +36,11 @@ public class Item extends BaseEntity {
     @Column(nullable = false)
     private String itemDetail;  // 상품 상세 설명
 
+    public void updateItem(ItemFormDto itemFormDto) {
+        this.itemNm = itemFormDto.getItemNm();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
 }
