@@ -29,7 +29,7 @@ public class SecurityConfig {
         // 인증여부 확인
         http.authorizeHttpRequests()
                 .mvcMatchers("/css/**", "/js/**").permitAll()
-                .mvcMatchers("/", "/member/**", "item/**").permitAll()
+                .mvcMatchers("/", "/member/**", "/item/**", "/images/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
