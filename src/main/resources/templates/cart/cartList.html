@@ -151,11 +151,17 @@
         error: function(jqXHR, status, error) {
           if (jqXHR.status === 401) {
             alert('로그인 후 이용해주세요');
-            location.href = '/member/login';
+            location.href = '/members/login';
           } else {
-            alert(jqXHR.responseJSON.message);
+            // 서버 측에서 오류 응답에 '주문할 상품을 선택해주세요'나 '주문 권한이 없습니다.' 메시지를 넣은 경우에만 아래 조건문이 실행됩니다.
+            if (jqXHR.responseText && (jqXHR.responseText.includes('주문할 상품을 선택해주세요') || jqXHR.responseText.includes('주문 권한이 없습니다.'))) {
+              alert(jqXHR.responseText);
+            } else {
+              alert('오류가 발생했습니다. 나중에 다시 시도해주세요.');
+            }
           }
         }
+
 
       });
     }
