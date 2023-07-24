@@ -49,7 +49,7 @@ public class Order extends BaseEntity {
             order.addOrderItem(orderItem);
         }
 
-        order.setOrderStatus(OrderStatus.valueOf(OrderStatus.ORDER.toString()));
+        order.setOrderStatus(OrderStatus.ORDER);
         order.setOrderDate(LocalDateTime.now());
 
         return order;
@@ -71,4 +71,6 @@ public class Order extends BaseEntity {
             orderItem.cancel();
         }
     }
+
+
 }
